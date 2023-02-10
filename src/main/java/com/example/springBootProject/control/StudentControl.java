@@ -26,7 +26,7 @@ public class StudentControl {
 
      */
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public ResponseEntity<List<Student>>getAllStudent(){
         try{
             logger.info("successfull get all student details");
@@ -75,10 +75,10 @@ public class StudentControl {
     @DeleteMapping("/{id}")
     public ResponseEntity<String>deleteStudentById(@PathVariable String id){
         try {
-            logger.info("successfull delete student by id");
+            logger.info("successfully delete student by id");
             return new ResponseEntity<>(studentService.deleteStudent(id), HttpStatus.OK);
         }catch (Exception e){
-            logger.info("successfull delete student by id");
+            logger.info("unsuccessfully delete student by id");
             return  new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -88,14 +88,15 @@ public class StudentControl {
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Student>>getStudentById(@PathVariable String id) {
         try {
-            logger.info("successfull get student by id");
+            logger.info("successfully get student by id");
             return new ResponseEntity<>(studentService.getStudentById(id), HttpStatus.CREATED);
 
         }catch (Exception e){
-            logger.info("unsuccessfull get student by id");
+            logger.info("unsuccessfully get student by id");
 
             return  new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
+
 }
